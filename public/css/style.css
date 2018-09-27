@@ -1,0 +1,165 @@
+/*********************** navbar ***********************/
+
+#nav {
+  padding: 10px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.navbar-end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar-end form {
+  margin: 0;
+}
+
+.navbar-brand a i {
+  margin-right: 20px;
+}
+
+.navbar-brand a {
+  font-family: 'Righteous';
+}
+
+.profilImg {
+  height: 36px;
+  width: 36px;
+  border-radius: 90px;
+  border: 2px solid #56c1a8;
+}
+
+.profilImg a img {
+  height: 32px;
+  width: 32px;
+  border-radius: 90px;
+}
+
+.modal-content {
+  width: 75vw;
+}
+
+#inscription {
+  padding: 100px;
+  background-color: #F5F5F5;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #5CCEB3;
+}
+
+.register {
+  width: 35vw;
+}
+
+.register .control {
+  margin: 10px;
+}
+
+#modalButton {
+  text-align: center;
+}
+/*********************** Home ***********************/
+
+.parallax {
+  background: url("../../src/img/app_img/rice_1.jpg")no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.fixed_box {
+  width: 35vw;
+  height: 35vh;
+  background-color: rgba(65, 65, 65, 0.6);
+  border-radius: 25px;
+  margin-right: 10vw;
+  font-family: 'Ubuntu';
+  padding: 20px;
+}
+
+.fixed_box strong {
+  color: #00BC9D;
+}
+
+.fixed_box p:first-of-type {
+  font-size: 22px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.fixed_box_content {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home_section {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.home_section h4 {
+  font-size: 35px;
+  font-family: 'Ubuntu';
+  margin-bottom: 15px;
+}
+
+.home_section h2 {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.home_section .container {
+  padding-top: 60px;
+}
+
+.home_section .column {
+  border: 2px solid #F5F5F5;
+  margin: 0 10px;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+.home_section .column:hover {
+  box-shadow: 0 4px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/*********************** userAccount ***********************/
+
+
+#user_img_update {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#user_update_form {
+  padding: 20px;
+  border: 2px solid #F5F5F5;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.label {
+  margin-top: 10px;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

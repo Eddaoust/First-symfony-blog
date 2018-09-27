@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+
+
+{% block body %}
+
+    <h1 class="title">Inscription sur le Blog</h1>
+    {{ form_start(form) }}
+    <div class="field column is-three-fifths is-offset-one-fifth">
+
+        <div class="control">
+            {{ form_row(form.email, {'attr': {'class': 'input is-primary', 'placeholder': 'Entrez votre adresse email'}}) }}
+        </div>
+        <div class="control">
+            {{ form_row(form.username, {'attr': {'class': 'input is-primary', 'placeholder': 'Entrez votre pseudo'}}) }}
+        </div>
+        <div class="control">
+            {{ form_row(form.password, {'attr': {'class': 'input is-primary', 'placeholder': 'Entrez votre mot de passe'}}) }}
+        </div>
+        <div class="control">
+            {{ form_row(form.confirm_password, {'attr': {'class': 'input is-primary', 'placeholder': 'Confirmez votre mot de passe'}}) }}
+        </div>
+        <div class="control">
+            <input type="submit" class="button is-primary" value="Valider">
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

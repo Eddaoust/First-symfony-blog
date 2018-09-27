@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Righteous|Ubuntu" rel="stylesheet">
+            <link rel="stylesheet" href="css/style.css">
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav id="nav" class="navbar is-white">
+                <div class="navbar-brand">
+                    <a class="title is-2 has-text-grey-dark" href="https://bulma.io"><i class="fab fa-hotjar has-text-danger"></i>Myèl</a>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        {% if not app.user %}
+                        <form action="{{ path('security_login') }}" method="post">
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <input class="input is-grey-light" type="text" id="log" name="_username" placeholder="Email" required>
+                                </div>
+                                <div class="control">
+                                    <input class="input is-grey-light" type="password" id="password" name="_password" placeholder="Password" required>
+                                </div>
+                                <div class="control">
+                                    <input class="button is-danger is-outlined has-text-weight-bold" type="submit" value="Connexion">
+                                </div>
+                                <div class="control">
+                                    <a id="button" type="button" class="button is-primary is-outlined has-text-weight-bold" href="{{ path('security_registration') }}">Inscription</a>
+                                </div>
+                            </div>
+                        </form>
+                        {% else %}
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <a href="{{ path('security_logout') }}" class="button is-danger is-outlined has-text-weight-bold">Déconnexion</a>
+                            </div>
+                            <div class="control profilImg">
+                                <a href=""></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
