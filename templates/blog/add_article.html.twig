@@ -21,9 +21,7 @@
                 {{ form_row(form.category) }}
             </div>
         </div>
-        <div class="control" style="margin: 25px 0">
-            {{ form_row(form.user, {'attr': {'type': 'text', 'class': 'input is-primary'}}) }}
-        </div>
+        {# Recherche de solution afin de récupérer l'id user en champ caché #}
         <div class="control" style="margin: 15px 0">
             <input type="submit" class="button is-primary" value="Valider">
         </div>
