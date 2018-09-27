@@ -5,14 +5,10 @@ namespace App\Controller;
 use App\Entity\Articles;
 use App\Form\ArticlesAddType;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class BlogController extends AbstractController
 {
@@ -39,6 +35,7 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $article->setCreated(new \DateTime('now'));
+            $article->setUser($this->getUser());
             $manager->persist($article);
             $manager->flush();
 
