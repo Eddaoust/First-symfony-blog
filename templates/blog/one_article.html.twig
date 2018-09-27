@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog - homepage{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="column is-three-fifths is-offset-one-fifth">
+        <div id="cardsView" class="card column">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="img/{{ article.img }}" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="img/{{ article.img }}" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-6">{{ article.title }}</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    {{ article.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 class BlogController extends AbstractController
@@ -17,8 +18,29 @@ class BlogController extends AbstractController
      */
     public function index()
     {
+        $repo = $this->getDoctrine()->getManager()
+            ->getRepository(Articles::class);
+        $articles = $repo->findAll();
+
         return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
+            'articles' => $articles
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return Response
+     *
+     * @Route("/article/{id}", name="one_article")
+     */
+    public function showArticle($id)
+    {
+        $repo = $this->getDoctrine()->getManager()
+            ->getRepository(Articles::class);
+        $article = $repo->find($id);
+
+        return $this->render('blog/one_article.html.twig', [
+            'article' => $article
         ]);
     }
 
@@ -39,7 +61,7 @@ class BlogController extends AbstractController
             $manager->persist($article);
             $manager->flush();
 
-            return $this->redirectToRoute('show', [
+            return $this->redirectToRoute('one_article', [
                 'id' => $article->getId()
             ]);
         }
@@ -47,28 +69,4 @@ class BlogController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-    /**
-     * @param $id
-     * @return Response
-     *
-     * @Route("/show/{id}", name="show", requirements={"page"="\d+"})
-     */
-    public function showArticle($id)
-    {
-        $article = $this->getDoctrine()
-            ->getRepository(Articles::class)
-            ->find($id);
-
-        if (!$article)
-        {
-            throw $this->createNotFoundException('Pas d\article!');
-        }
-
-        return new Response(
-            '<h1>'.$article->getTitle().'</h1>
-                    <p>'.$article->getContent().'</p>'
-        );
-    }
-
 }
