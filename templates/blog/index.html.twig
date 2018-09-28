@@ -5,6 +5,9 @@
 
 {% block body %}
     {{ parent() }}
+    {% if app.user %}
+        <a class="button is-danger is-outlined has-text-weight-bold" href="{{ path('add_article') }}">Ajouter un article</a>
+    {% endif %}
     {% for article in articles %}
         <div class="column is-three-fifths is-offset-one-fifth">
             <div id="cardsView" class="card column">
@@ -34,7 +37,4 @@
         </div>
     {% endfor %}
 
-    {% if app.user %}
-    <a class="button is-danger is-outlined has-text-weight-bold" href="{{ path('add_article') }}">Ajouter un article</a>
-    {% endif %}
 {% endblock %}
