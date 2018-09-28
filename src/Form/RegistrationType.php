@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RegistrationType extends AbstractType
 {
@@ -19,6 +20,7 @@ class RegistrationType extends AbstractType
             ->add('username')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class) // Ajout d'un champs pas présent dans l'entité donc on doit le rajouter manuellement dans User
+            ->add('submit', SubmitType::class)
         ;
     }
 

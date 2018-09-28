@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", name="blog")
+     * @Route("/", name="home")
      */
     public function index()
     {
@@ -73,7 +73,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/article_manager", name="article_manager")
      */
-    public function updateArticle()
+    public function listArticle()
     {
         $repo = $this->getDoctrine()->getManager()
             ->getRepository(Articles::class);
@@ -83,4 +83,17 @@ class BlogController extends AbstractController
             'articles' => $articles
         ]);
     }
+
+    /**
+     * @param $id
+     * @Route('/update_article/{id}', name='update_article')
+     */
+    /*
+    public function updateArticle(Request $request, ObjectManager $manager, $id)
+    {
+        $repo = $this->getDoctrine()->getManager()
+            ->getRepository(Articles::class);
+        $article = $repo->find($id);
+    }
+    */
 }
