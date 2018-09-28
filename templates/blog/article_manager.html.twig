@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Managing articles{% endblock %}
+
+{% block body %}
+    <div class="column">
+        <p>Il y a <span class="has-text-info">{{ articles | length }}</span> article(s) sur le blog.</p><br>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+            <tr>
+                <!-- Lien de tri des colones du listing -->
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+                <th>Affichage</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.created | date('d/m/Y') }}</td>
+                <td class="case"><a class="has-text-info" href="#"><i class="far fa-edit"></i></a></td>
+                <td class="case"><a class="has-text-danger" href="#"><i class="far fa-trash-alt"></i></a></td>
+                <td class="case"><a class="has-text-link" href="#"><i class="fas fa-eye-slash"></i></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -69,4 +69,18 @@ class BlogController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/article_manager", name="article_manager")
+     */
+    public function updateArticle()
+    {
+        $repo = $this->getDoctrine()->getManager()
+            ->getRepository(Articles::class);
+        $articles = $repo->findAll();
+
+        return $this->render('blog/article_manager.html.twig', [
+            'articles' => $articles
+        ]);
+    }
 }

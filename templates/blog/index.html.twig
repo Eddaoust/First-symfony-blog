@@ -7,6 +7,7 @@
     {{ parent() }}
     {% if app.user %}
         <a class="button is-danger is-outlined has-text-weight-bold" href="{{ path('add_article') }}">Ajouter un article</a>
+        <a class="button is-primary is-outlined has-text-weight-bold" href="{{ path('article_manager') }}">Gérer les articles</a>
     {% endif %}
     {% for article in articles %}
         <div class="column is-three-fifths is-offset-one-fifth">
