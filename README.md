@@ -1,2 +1,3 @@
 # first-symfony-blog
-My very first symfony app
+My very first Symfony 4 Project.
+it's a simple blog to practice and train.
