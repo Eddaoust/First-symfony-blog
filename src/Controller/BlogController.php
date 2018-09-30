@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Articles;
 use App\Form\ArticlesAddType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+
 
 
 class BlogController extends AbstractController
@@ -20,7 +21,7 @@ class BlogController extends AbstractController
     {
         $repo = $this->getDoctrine()->getManager()
             ->getRepository(Articles::class);
-        $articles = $repo->findAll();
+        $articles = $repo->findAll(); // Get de tous les articles pour les afficher
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles
@@ -37,7 +38,7 @@ class BlogController extends AbstractController
     {
         $repo = $this->getDoctrine()->getManager()
             ->getRepository(Articles::class);
-        $article = $repo->find($id);
+        $article = $repo->find($id); // Recherche d'un article via id
 
         return $this->render('blog/one_article.html.twig', [
             'article' => $article
@@ -49,10 +50,10 @@ class BlogController extends AbstractController
      */
     public function addArticle(Request $request, ObjectManager $manager)
     {
-        $article = new Articles();
+        $article = new Articles(); // Création d'un article vide
 
-        $form = $this->createForm(ArticlesAddType::class, $article);
-        $form->handleRequest($request);
+        $form = $this->createForm(ArticlesAddType::class, $article); // Création d'un form lié à l'entité Article
+        $form->handleRequest($request); // On rempli l'article avec les données du form
 
         if ($form->isSubmitted() && $form->isValid())
         {
@@ -86,14 +87,31 @@ class BlogController extends AbstractController
 
     /**
      * @param $id
-     * @Route('/update_article/{id}', name='update_article')
+     * @Route("/update_article/{id}", name="update_article")
      */
-    /*
+
     public function updateArticle(Request $request, ObjectManager $manager, $id)
     {
         $repo = $this->getDoctrine()->getManager()
             ->getRepository(Articles::class);
-        $article = $repo->find($id);
+        $article = $repo->find($id); // Get de l'article à update
+
+        $form = $this->createForm(ArticlesAddType::class, $article); // Création du Form rempli avec les données de l'entité
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $manager->persist($article);
+            $manager->flush();
+
+            return $this->redirectToRoute('one_article', [
+                'id' => $article->getId()
+            ]);
+        }
+
+        return $this->render('blog/update_article.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
-    */
+
 }
