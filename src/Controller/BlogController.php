@@ -46,7 +46,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add_article")
+     * @Route("/admin/add", name="add_article")
      */
     public function addArticle(Request $request, ObjectManager $manager)
     {
@@ -72,7 +72,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/article_manager", name="article_manager")
+     * @Route("/admin/article_manager", name="article_manager")
      */
     public function listArticle()
     {
@@ -87,7 +87,7 @@ class BlogController extends AbstractController
 
     /**
      * @param $id
-     * @Route("/update_article/{id}", name="update_article")
+     * @Route("/admin/update_article/{id}", name="update_article")
      */
 
     public function updateArticle(Request $request, ObjectManager $manager, $id)
