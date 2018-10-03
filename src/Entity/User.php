@@ -57,6 +57,11 @@ class User implements UserInterface
      */
     private $confirm_password; // Ajout du champ hors du contexte de l'ORM
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -174,6 +179,18 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->role];
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
     }
 }
